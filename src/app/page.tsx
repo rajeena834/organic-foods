@@ -3,7 +3,7 @@
 export const dynamic = "force-dynamic";
 
 import { Button } from '@/components/ui/button';
-import React, { useState } from 'react'
+import React, { Suspense, useState } from 'react'
 import { Input } from "@/components/ui/input"
 import {
   Sheet,
@@ -83,11 +83,13 @@ function Homepage() {
             className="w-auto h-190 object-contain"
           />
         </div>
+           
+     
       </div>
 
 
 
-
+  <Suspense fallback={null}>
       <Sheet open={openSignInForm} onOpenChange={setOpenSignInForm}>
 
         <SheetContent className='min-w-[500px] flex justify-center items-center'>
@@ -102,6 +104,7 @@ function Homepage() {
           </div>
         </SheetContent>
       </Sheet>
+       </Suspense>
     </div> 
   )
 }
