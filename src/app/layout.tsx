@@ -3,6 +3,7 @@ import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import CustomLayout from "@/layout-provider";
 import { Toaster } from "react-hot-toast";
+import { Suspense } from "react";
 
 
 
@@ -22,7 +23,9 @@ export default function RootLayout({
       <body
       >
        <CustomLayout>
+         <Suspense fallback={null}>
          {children}
+         </Suspense>
        </CustomLayout>
        <Toaster position="top-center" reverseOrder={false} />
       </body>
