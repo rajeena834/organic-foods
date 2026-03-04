@@ -25,15 +25,15 @@ async function UserShopPage({ searchParams }: UserShopPageProps) {
   if (!response.success) {
     return <div>{response.message}</div>;
   }
-
+const products = response.data;
   return (
-    <div className="flex flex-col gap-5">
-      <PageTitle title="Shop Products" />
+    <div className="flex flex-col gap-5 md:px-10 ">
+      <PageTitle  title="Shop Products" />
 
-      <Filters />
+      <Filters products={products}/>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
-        {response.data.map((product: IProduct) => (
+        {products.map((product: IProduct) => (
           <ProductTile key={product.id} product={product} />
         ))}
       </div>

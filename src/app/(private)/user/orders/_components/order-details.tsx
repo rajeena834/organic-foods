@@ -12,7 +12,17 @@ import usersGlobalStore, {
 import { IOrderItem } from "@/interfaces";
 import React from "react";
 import toast from "react-hot-toast";
-
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
 interface IOrderDetailsProps {
   openOrderDetails: boolean;
   setOpenOrderDetails: (value: boolean) => void;
@@ -111,13 +121,39 @@ function OrderDetails({
         <div className="flex justify-end gap-5">
           {selectedOrder.order_status === "order_placed" && (
             <div className="flex gap-5">
-              <Button
+              {/* <Button
                 variant={"outline"}
                 onClick={cancelOrderHandler}
                 disabled={loading}
               >
                 Cancel Order
-              </Button>
+              </Button> */}
+              <AlertDialog>
+  <AlertDialogTrigger asChild>
+    <Button variant="outline" disabled={loading}>
+      Cancel Order
+    </Button>
+  </AlertDialogTrigger>
+
+  <AlertDialogContent>
+    <AlertDialogHeader>
+      <AlertDialogTitle>Are you sure?</AlertDialogTitle>
+      <AlertDialogDescription>
+        This action will cancel the order permanently.
+      </AlertDialogDescription>
+    </AlertDialogHeader>
+
+    <AlertDialogFooter>
+      <AlertDialogCancel>No, Keep Order</AlertDialogCancel>
+      <AlertDialogAction
+        onClick={cancelOrderHandler}
+        className="bg-red-600 hover:bg-red-700"
+      >
+        Yes, Cancel Order
+      </AlertDialogAction>
+    </AlertDialogFooter>
+  </AlertDialogContent>
+</AlertDialog>
 
               {user.is_admin && (
                 <Button

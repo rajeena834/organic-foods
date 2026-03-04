@@ -17,7 +17,7 @@ function Header({ user }: { user: IUser }) {
   return (
     <div className="bg-primary p-5 flex justify-between items-center">
       <div className="p-2 bg-white rounded-2xl flex items-center">
-        <img
+        <img onClick={() => router.push("/")}
           src="https://next-supa-agri-marketplace.vercel.app/hero.jpg"
           className="w-8 h-8 object-contain"
         />

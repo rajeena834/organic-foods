@@ -27,29 +27,29 @@ function Homepage() {
       path: "/"
     },
     {
-      name: "About",
-      path: "/about"
+      name: "Products",
+      path: "/seller/products"
 
     },
-    {
-      name: "Services",
-      path: "/services"
+    // {
+    //   name: "Services",
+    //   path: "/services"
 
-    },
+    // },
     {
-      name: "Contact",
-      path: "/contact"
+      name: "Orders",
+      path: "/user/orders"
 
     }
   ]
   return (
-     <div className='lg:px-20 px-5 py-10'>
+     <div className='lg:px-20 md:px-10 px-5 py-10'>
    
       
       <div className='flex justify-between items-center'>
         <h1 className='font-bold text-3xl text-primary'>S.O.F</h1>
 
-        <div className='flex gap-5'>
+        <div className='flex gap-5 mt-2 items-center'>
           {menuItems.map((item, index) => (
             <div key={index} className='text-sm text-gray-600 font-semibold'>
               {item.name}
@@ -67,7 +67,7 @@ function Homepage() {
             <h1 className=" text-2xl lg:text-4xl font-bold text-primary">
               SHEY - <b className="text-orange-600">ORGANIC</b> - FOODS
             </h1>
-            <p className="text-gray-600 text-sm font-semibold">
+            <p className="text-gray-600 text-sm font-semibold mt-2">
               Shey-Organic-Foods is a platform that connects farmers to buyers
               and provides a platform for farmers to sell their produce directly
               to consumers. Here you can find fresh farm produce at affordable
@@ -79,8 +79,9 @@ function Homepage() {
           <img
              //src="https://next-supa-agri-marketplace.vercel.app/hero.jpg"
 
-             src='images/fruits and vegetables.webp'
-            className="w-auto h-190 object-contain"
+             //src='images/fruits and vegetables.webp'
+             src='images/homepage.png' 
+            className="w-auto h-80 object-contain"
           />
         </div>
            

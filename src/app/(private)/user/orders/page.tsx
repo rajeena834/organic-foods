@@ -46,7 +46,7 @@ function UsersOrdersPage() {
 
   const renderOrderProperty = (key: string, value: any) => {
     return (
-      <div className="flex flex-col">
+      <div className="md:px-10 flex flex-col">
         <span className="text-xs text-gray-500 font-semibold">{key}</span>
         <span className="text-sm font-semibold capitalize">{value}</span>
       </div>
@@ -54,7 +54,7 @@ function UsersOrdersPage() {
   };
 
   return (
-    <div>
+    <div className="md:px-5">
       <PageTitle title="Orders" />
 
       {loading && <Spinner height={120} />}
@@ -64,13 +64,13 @@ function UsersOrdersPage() {
       )}
 
       {!loading && (
-        <div className="flex flex-col gap-7 mt-7">
+        <div className=" flex flex-col gap-7 mt-7">
           {orders.map((order: IOrderItem) => (
             <div
               key={order.id}
-              className="p-5 rounded-lg border border-gray-300"
+              className=" rounded-lg border border-gray-300 h-80 "
             >
-              <div className="grid grid-cols-1 lg:grid-cols-4 md:grid-cols-2">
+              <div className="md:mt-5 grid grid-cols-1 lg:grid-cols-4 md:grid-cols-2">
                 {renderOrderProperty("Order ID", order.id)}
                 {renderOrderProperty(
                   "Order Date and Time",
@@ -80,7 +80,7 @@ function UsersOrdersPage() {
                 {renderOrderProperty("Order Status", order.order_status)}
               </div>
 
-              <div className="mt-5">
+              <div className="md:px-5 mt-5">
                 <h1 className="text-sm font-bold text-gray-600">Order Items</h1>
                 <div className="mt-5 flex flex-col gap-5">
                   {order.order_items.map((item: any) => (
@@ -106,7 +106,7 @@ function UsersOrdersPage() {
                 </div>
               </div>
 
-              <div className="flex justify-end gap-5 mt-5">
+              <div className="flex justify-end gap-5 mt-5 md:px-5">
                 <Button
                   onClick={() => {
                     setSelectedOrder(order);

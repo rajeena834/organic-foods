@@ -57,7 +57,7 @@ function AdminUsersPage() {
     "Is Active",
   ];
   return (
-    <div>
+    <div className="md:px-10">
       <PageTitle title="Users" />
 
       {loading && <Spinner height={120} />}

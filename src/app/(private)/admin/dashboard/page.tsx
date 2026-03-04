@@ -37,7 +37,7 @@ function AdminDashboardPage() {
   }, []);
 
   return (
-    <div>
+    <div className="md:px-10">
       <PageTitle title="Dashboard" />
 
       <div className="mt-7">

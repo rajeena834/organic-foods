@@ -75,11 +75,11 @@ function MenuItems({ openMenuItems, setOpenMenuItems }: IMenuItems) {
       route: "/user/addresses",
       icon: <Map size={iconSize} />,
     },
-    {
-      name: "Profile",
-      route: "/user/profile",
-      icon: <User2 size={iconSize} />,
-    },
+    // {
+    //   name: "Profile",
+    //   route: "/user/profile",
+    //   icon: <User2 size={iconSize} />,
+    // },
   ];
 
   const sellerMenuItems = [
@@ -162,7 +162,7 @@ if (!user) {
         </SheetHeader>
 
         {userRoles.length > 1 && (
-          <div className="flex flex-col gap-1 mt-10">
+          <div className="md:px-5 flex flex-col gap-1 mt-10">
             <h3 className="text-sm font-semibold text-gray-500">Select Role</h3>
             <RadioGroup
               defaultValue={selectedRole}
@@ -179,7 +179,7 @@ if (!user) {
           </div>
         )}
 
-        <div className="flex flex-col gap-10 mt-10">
+        <div className="md:px-5 flex flex-col gap-10 mt-10">
           {menuItemsToRender.map((item, index) => (
             <div
               className={`flex gap-5 p-3 rounded-md cursor-pointer items-center

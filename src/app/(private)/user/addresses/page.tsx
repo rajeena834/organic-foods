@@ -47,9 +47,9 @@ function UserAddressesPage() {
 
   return (
     <div>
-      <div className="flex justify-between items-center">
+      <div className="md:px-10 flex justify-between items-center">
         <PageTitle title="Addresses" />
-        <Button onClick={() => setOpenAddressForm(true)}>Add Address</Button>
+        <Button className="mt-2" onClick={() => setOpenAddressForm(true)}>Add Address</Button>
       </div>
 
       {loading && <Spinner height={120} />}
@@ -61,7 +61,7 @@ function UserAddressesPage() {
         </div>
       )}
 
-      <div className="flex flex-col gap-5 mt-7">
+      <div className="md:px-10 flex flex-col gap-5 mt-7">
         {addresses.map((address: IAddress) => (
           <div
             key={address.id}

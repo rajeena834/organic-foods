@@ -75,10 +75,10 @@ function AdminSellersPage() {
 
   const columns = ["Seller ID", "Name", "Email", "Created At" , "Actions"];
   return (
-    <div>
+    <div className="md:px-10">
       <div className="flex gap-5 justify-between items-center">
         <PageTitle title="Sellers" />
-        <Button
+        <Button className="mt-2"
          onClick={() => setOpenAddSellerDialog(true)}
         >Add seller</Button>
       </div>

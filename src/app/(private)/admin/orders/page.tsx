@@ -51,7 +51,7 @@ function AdminOrdersPage() {
   };
 
   return (
-    <div>
+    <div className="md:px-5">
       <PageTitle title="All Orders" />
 
       {loading && <Spinner height={120} />}

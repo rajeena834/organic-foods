@@ -151,7 +151,7 @@ function ProductForm({
             <FormItem className="flex flex-col gap-0">
               <FormLabel>Name</FormLabel>
               <FormControl>
-                <Input placeholder="Enter product name" {...field} />
+                <Input className="mt-2 border border-primary" placeholder="Enter product name" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -165,7 +165,7 @@ function ProductForm({
             <FormItem className="flex flex-col gap-0">
               <FormLabel>Description</FormLabel>
               <FormControl>
-                <Textarea placeholder="Enter product description" {...field} />
+                <Textarea className="mt-2 border border-primary" placeholder="Enter product description" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -180,15 +180,16 @@ function ProductForm({
               <FormItem>
                 <FormLabel>Category</FormLabel>
                 <Select
+              
                   onValueChange={field.onChange}
                   defaultValue={field.value}
                 >
                   <FormControl>
-                    <SelectTrigger>
-                      <SelectValue placeholder="Select category" />
+                    <SelectTrigger className="border border-primary">
+                      <SelectValue  placeholder="Select category" />
                     </SelectTrigger>
                   </FormControl>
-                  <SelectContent>
+                  <SelectContent >
                     {productCategories.map((category) => (
                       <SelectItem value={category.value} key={category.value}>
                         {category.label}
@@ -281,6 +282,7 @@ function ProductForm({
               </span>
             </div>
           ))}
+          
         </div>
         <div className="flex justify-end gap-5">
           {" "}

@@ -51,7 +51,7 @@ function SellerOrdersPage() {
   ];
 
   return (
-    <div>
+    <div className="md:px-10">
       <PageTitle title="Ordered Items" />
 
       {loading && <Spinner height={120} />}

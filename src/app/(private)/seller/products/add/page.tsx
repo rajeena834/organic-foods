@@ -4,7 +4,7 @@ import ProductsForm from '../_common/products-form'
 
 function AddProductPage() {
   return (
-    <div>
+    <div className='md:px-8' >
         <PageTitle title='Add Product'/>
         <ProductsForm formType='add'/>
     </div>

@@ -45,10 +45,10 @@ function SellerProductsPage() {
     }
   };
 
-  const deleteProductHandler = async (productId: number) => {
+  const deleteProductHandler = async (productId: string) => {
     try {
       setLoading(true);
-      const response = await deleteProductById(productId);
+      const response = await deleteProductById(Number(productId));
       if (response.success) {
         toast.success(response.message);
         fetchData();
@@ -76,10 +76,10 @@ function SellerProductsPage() {
   ];
 
   return (
-    <div>
+    <div className="md:px-10">
       <div className="flex justify-between items-center">
         <PageTitle title="My Products" />
-        <Button>
+        <Button className="mt-2">
           <Link href="/seller/products/add">Add Product</Link>
         </Button>
       </div>

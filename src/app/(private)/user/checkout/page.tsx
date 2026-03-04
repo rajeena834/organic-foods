@@ -117,7 +117,7 @@ function UserCheckoutPage() {
   };
 
   return (
-    <div className="flex flex-col gap-5">
+    <div className="c flex flex-col gap-5">
       <PageTitle title="Checkout" />
 
       <h1 className="text-xl font-bold text-gray-600">

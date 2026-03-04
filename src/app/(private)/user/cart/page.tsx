@@ -63,7 +63,7 @@ function UserCartPage() {
   let deliveryFeeAndTax = subTotal * 0.1;
 
   return (
-    <div>
+    <div className="md:px-10">
       <PageTitle title="Cart" />
 
       <div className="grid grid-cols-4 gap-5 mt-7 items-start">

@@ -58,14 +58,15 @@ function ProductTile({ product }: { product: IProduct }) {
       <hr className="my-2 border border-gray-300" />
 
       <div
-        className="h-40 flex justify-center items-center relative cursor-pointer"
+        //className="h-40 flex justify-center items-center relative cursor-pointer"
+        className="w-full h-70 overflow-hidden rounded-lg bg-gray-100 relative cursor-pointer"
         onMouseEnter={() => setShowDescription(true)}
         onMouseLeave={() => setShowDescription(false)}
       >
         <img
           src={product.images[0]}
           alt={product.name}
-          className={`h-full object-contain transition-all duration-300 ${
+          className={`w-full h-full object-cover transition-all duration-300 ${
             showDescription ? "opacity-30" : "opacity-100"
           }`}
         />
