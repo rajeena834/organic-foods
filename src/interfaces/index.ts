@@ -11,7 +11,7 @@ export interface IUser {
 }
 
 export interface IProduct {
-  id: string;
+  id: number;
   seller_id: string;
   name: string;
   category: string;

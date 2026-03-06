@@ -45,10 +45,10 @@ function SellerProductsPage() {
     }
   };
 
-  const deleteProductHandler = async (productId: string) => {
+  const deleteProductHandler = async (productId: number) => {
     try {
       setLoading(true);
-      const response = await deleteProductById(Number(productId));
+      const response = await deleteProductById(productId);
       if (response.success) {
         toast.success(response.message);
         fetchData();

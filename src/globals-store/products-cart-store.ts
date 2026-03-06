@@ -44,14 +44,14 @@ const productsCartStore = create<IProductsCartStore>()(
         set({ items: existingItems });
       },
 
-      updateProductQuantity: (productId: string, quantity: number) => {
+      updateProductQuantity: (productId: number, quantity: number) => {
         const newItems = get().items.map((item:any) =>
           item.id === productId ? { ...item, quantity } : item
         );
         set({ items: newItems });
       },
 
-      deleteProductFromCart: (productId: string) => {
+      deleteProductFromCart: (productId: number) => {
         const newItems = get().items.filter(
           (item:any) => item.id !== productId
         );
@@ -72,7 +72,7 @@ export default productsCartStore;
 export interface IProductsCartStore {
   items: IProduct[];
   addProductToCart: (product: IProduct) => void;
-  updateProductQuantity: (productId: string, quantity: number) => void;
-  deleteProductFromCart: (productId: string) => void;
+  updateProductQuantity: (productId: number, quantity: number) => void;
+  deleteProductFromCart: (productId: number) => void;
   clearCart: () => void;
 }

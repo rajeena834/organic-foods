@@ -23,12 +23,12 @@ function Homepage() {
   const formType = searchParams.get("formType")
   const menuItems = [
     {
-      name: "Home",
-      path: "/"
+      // name: "Home",
+      // path: "/"
     },
     {
-      name: "Products",
-      path: "/seller/products"
+      // name: "Products",
+      // path: "/seller/products"
 
     },
     // {
@@ -37,8 +37,8 @@ function Homepage() {
 
     // },
     {
-      name: "Orders",
-      path: "/user/orders"
+      // name: "Orders",
+      // path: "/user/orders"
 
     }
   ]
@@ -52,7 +52,7 @@ function Homepage() {
         <div className='flex gap-5 mt-2 items-center'>
           {menuItems.map((item, index) => (
             <div key={index} className='text-sm text-gray-600 font-semibold'>
-              {item.name}
+              {/* {item.name} */}
 
             </div>
 
