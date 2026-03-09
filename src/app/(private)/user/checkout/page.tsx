@@ -114,10 +114,13 @@ function UserCheckoutPage() {
   const options = {
     // passing the client secret obtained from the server
     clientSecret: paymentIntentToken,
+    assistant: {
+    enabled: false,
+  },
   };
 
   return (
-    <div className="c flex flex-col gap-5">
+    <div className="md:px-5 flex flex-col gap-5">
       <PageTitle title="Checkout" />
 
       <h1 className="text-xl font-bold text-gray-600">

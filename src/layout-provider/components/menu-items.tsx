@@ -33,7 +33,13 @@ interface IMenuItems {
 function MenuItems({ openMenuItems, setOpenMenuItems }: IMenuItems) {
   const { user } = usersGlobalStore() as IUsersGlobalStore;
 
-  const [selectedRole, setSelectedRole] = React.useState("user");
+  //const [selectedRole, setSelectedRole] = React.useState("user");
+  const [selectedRole, setSelectedRole] = React.useState(() => {
+    if (typeof window !== "undefined") {
+      return localStorage.getItem("selectedRole") || "user";
+    }
+    return "user";
+  });
   const [loading, setLoading] = React.useState(false);
   const pathname = usePathname();
   const router = useRouter();
@@ -132,9 +138,9 @@ function MenuItems({ openMenuItems, setOpenMenuItems }: IMenuItems) {
       value: "admin",
     },
   ];
-if (!user) {
-  return null; // or <div>Loading...</div>
-}
+  if (!user) {
+    return null; // or <div>Loading...</div>
+  }
   if (!user.is_seller) {
     userRoles = userRoles.filter((role) => role.value !== "seller");
   }
@@ -164,10 +170,18 @@ if (!user) {
         {userRoles.length > 1 && (
           <div className="md:px-5 flex flex-col gap-1 mt-10">
             <h3 className="text-sm font-semibold text-gray-500">Select Role</h3>
-            <RadioGroup
+            {/* <RadioGroup
               defaultValue={selectedRole}
               className="flex flex-row gap-5"
               onValueChange={(value) => setSelectedRole(value as string)}
+            > */}
+            <RadioGroup
+              defaultValue={selectedRole}
+              className="flex flex-row gap-5"
+              onValueChange={(value) => {
+                setSelectedRole(value);
+                localStorage.setItem("selectedRole", value);
+              }}
             >
               {userRoles.map((role, index) => (
                 <div className="flex items-center space-x-2" key={index}>
