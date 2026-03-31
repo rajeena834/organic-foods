@@ -174,3 +174,24 @@ export const getOrdersReport = async () => {
     
   }
 }
+
+export const returnOrder = async (orderId: string) => {
+  try {
+    const { data, error } = await supabase
+      .from("orders")
+      .update({ order_status: "returned" })
+      .eq("id", orderId);
+
+    if (error) throw new Error(error.message);
+
+    return {
+      success: true,
+      message: "Return request submitted",
+    };
+  } catch (error: any) {
+    return {
+      success: false,
+      message: error.message,
+    };
+  }
+};

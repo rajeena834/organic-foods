@@ -145,3 +145,34 @@ export const addSeller = async (email: string) => {
     };
   }
 };
+
+export const updateUserStatus = async ({
+  id,
+  is_active,
+}: {
+  id: string;
+  is_active: boolean;
+}) => {
+  try {
+    const { data, error } = await supabase
+      .from("user_profiles")
+      .update({ is_active })
+      .eq("id", id)
+      .select("*");
+
+    if (error) {
+      throw new Error(error.message);
+    }
+
+    return {
+      success: true,
+      data,
+      message: "User status updated successfully",
+    };
+  } catch (error: any) {
+    return {
+      success: false,
+      message: error.message,
+    };
+  }
+};

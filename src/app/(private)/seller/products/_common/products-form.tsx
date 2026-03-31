@@ -1,4 +1,3 @@
-
 "use client";
 import React, { useMemo } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -51,9 +50,12 @@ function ProductForm({
   const productFormSchema = z.object({
     name: z.string().nonempty(),
     description: z.string().nonempty(),
-    price: z.number().positive(),
+    price: z.number().positive().max(10000, "Price cannot be more than 10000"),
     category: z.string().nonempty(),
-    available_stock: z.number().positive(),
+    available_stock: z
+      .number()
+      .positive()
+      .max(20, "Available stock cannot be more than 20"),
   });
 
   const form = useForm<z.infer<typeof productFormSchema>>({
@@ -151,7 +153,11 @@ function ProductForm({
             <FormItem className="flex flex-col gap-0">
               <FormLabel>Name</FormLabel>
               <FormControl>
-                <Input className="mt-2 border border-primary" placeholder="Enter product name" {...field} />
+                <Input
+                  className="mt-2 border border-primary"
+                  placeholder="Enter product name"
+                  {...field}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -165,7 +171,11 @@ function ProductForm({
             <FormItem className="flex flex-col gap-0">
               <FormLabel>Description</FormLabel>
               <FormControl>
-                <Textarea className="mt-2 border border-primary" placeholder="Enter product description" {...field} />
+                <Textarea
+                  className="mt-2 border border-primary"
+                  placeholder="Enter product description"
+                  {...field}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -180,16 +190,15 @@ function ProductForm({
               <FormItem>
                 <FormLabel>Category</FormLabel>
                 <Select
-              
                   onValueChange={field.onChange}
                   defaultValue={field.value}
                 >
                   <FormControl>
                     <SelectTrigger className="border border-primary">
-                      <SelectValue  placeholder="Select category" />
+                      <SelectValue placeholder="Select category" />
                     </SelectTrigger>
                   </FormControl>
-                  <SelectContent >
+                  <SelectContent>
                     {productCategories.map((category) => (
                       <SelectItem value={category.value} key={category.value}>
                         {category.label}
@@ -230,12 +239,25 @@ function ProductForm({
               <FormItem>
                 <FormLabel>Available Stock</FormLabel>
                 <FormControl>
-                  <Input
+                  {/* <Input
                     type="number"
                     placeholder="Enter available stock"
                     value={field.value}
                     onChange={(e) => {
                       field.onChange(parseFloat(e.target.value));
+                    }}
+                  /> */}
+                  <Input
+                    type="number"
+                    max={20}
+                    placeholder="Enter available stock"
+                    value={field.value}
+                    onChange={(e) => {
+                      const value = Number(e.target.value);
+
+                      if (value <= 20) {
+                        field.onChange(value);
+                      }
                     }}
                   />
                 </FormControl>
@@ -282,7 +304,6 @@ function ProductForm({
               </span>
             </div>
           ))}
-          
         </div>
         <div className="flex justify-end gap-5">
           {" "}

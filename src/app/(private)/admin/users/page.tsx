@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 import PageTitle from "@/components/ui/page-title";
 import { IUser } from "@/interfaces";
 import toast from "react-hot-toast";
-import { getAllUsers } from "@/actions/users";
+import { getAllUsers, updateUserStatus } from "@/actions/users";
 import Spinner from "@/components/ui/spinner";
 import {
   Table,
@@ -20,13 +20,37 @@ function AdminUsersPage() {
   const [loading, setLoading] = React.useState(true);
   const [users, setUsers] = React.useState<IUser[]>([]);
 
-  const onActiveChange = async (id: string, isActive: boolean) => {
-    try {
+  // const onActiveChange = async (id: string, isActive: boolean) => {
+  //   try {
        
-    } catch (error) {
+  //   } catch (error) {
         
+  //   }
+  // }
+
+  const onActiveChange = async (id: string, isActive: boolean) => {
+  try {
+    const response: any = await updateUserStatus({
+      id,
+      is_active: isActive,
+    });
+
+    if (response.success) {
+      toast.success("User status updated");
+
+     
+      setUsers((prev) =>
+        prev.map((user) =>
+          user.id === id ? { ...user, is_active: isActive } : user
+        )
+      );
+    } else {
+      toast.error(response.message);
     }
+  } catch (error) {
+    toast.error("Failed to update user status");
   }
+};
 
   const fetchData = async () => {
     try {

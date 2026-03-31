@@ -24,6 +24,7 @@ import toast from "react-hot-toast";
 import usersGlobalStore, {
   IUsersGlobalStore,
 } from "@/globals-store/users-store";
+import productsCartStore from "@/globals-store/products-cart-store";
 
 interface IMenuItems {
   openMenuItems: boolean;
@@ -50,6 +51,8 @@ function MenuItems({ openMenuItems, setOpenMenuItems }: IMenuItems) {
   const onSignOut = async () => {
     try {
       setLoading(true);
+       productsCartStore.persist.clearStorage();
+        productsCartStore.getState().clearCart();
       await signOut();
       toast.success("Signed out successfully");
       router.push("/");
